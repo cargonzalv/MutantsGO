@@ -21,7 +21,7 @@ server.register(MutantRoutes);
 
 const start = async () => {
   try {
-    await server.listen(Port);
+    await server.listen(Port, '0.0.0.0');
     console.log('Server started successfully');
   } catch (err) {
     server.log.error(err);
