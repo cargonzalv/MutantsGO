@@ -2,10 +2,10 @@ import { FastifyInstance, FastifyPluginAsync, FastifyPluginOptions } from 'fasti
 
 import fp from 'fastify-plugin';
 import mongoose from 'mongoose';
-import { Blog, BlogModel } from './schema/mutantSchema';
+import { Mutant, MutantModel } from './models/mutantSchema';
 
 export interface Models {
-  Blog: BlogModel;
+  Mutant: MutantModel;
 }
 export interface Db {
   models: Models;
@@ -26,12 +26,12 @@ const ConnectDB: FastifyPluginAsync<MyPluginOptions> = async (
     mongoose.connection.on('disconnected', () => {
       fastify.log.error({ actor: 'MongoDB' }, 'disconnected');
     });
-    const db = await mongoose.connect(options.uri, {
+    await mongoose.connect(options.uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-    const models: Models = { Blog };
+    const models: Models = { Mutant };
     fastify.decorate('db', { models });
   } catch (error) {
     console.error(error);
