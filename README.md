@@ -1,6 +1,6 @@
-# Simulación planetas
+# Detección de mutantes
 
-Simulación de movimiento de planetas desarrollado en Golang.
+API de detección de mutantes desarrollado en Nodejs.
 
 ## Simulación gráfica
 ![Simulación de prueba](docs/sim.gif)

@@ -5,6 +5,8 @@ import { HumanService, StatsService } from '../services';
 import { Db } from '../db/index';
 import NodeCache from 'node-cache';
 import { StatsModel } from 'models/statsModel';
+import { MutantSchemaDef, StatsSchemaDef } from '../docsConfig';
+
 const mutantCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
 
 // Declaration merging
@@ -12,11 +14,16 @@ declare module 'fastify' {
   export interface FastifyInstance {
     db: Db;
   }
+  export interface FastifySchema {
+    description: string;
+    tags: string[];
+    summary: string;
+  }
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MutantRoute: FastifyPluginAsync = async (server: FastifyInstance, options: FastifyPluginOptions) => {
-  server.post<{ Body: MutantAttrs }>('/mutant', {}, async (request, reply) => {
+  server.post<{ Body: MutantAttrs }>('/mutant', MutantSchemaDef, async (request, reply) => {
     try {
       const { Mutant } = server.db.models;
       const body = request.body;
@@ -36,7 +43,7 @@ const MutantRoute: FastifyPluginAsync = async (server: FastifyInstance, options:
       return reply.send(500);
     }
   });
-  server.get('/stats', {}, async (request, reply) => {
+  server.get('/stats', StatsSchemaDef, async (request, reply) => {
     try {
       let stats = await mutantCache.get<StatsModel>('stats');
       if (!stats) {
