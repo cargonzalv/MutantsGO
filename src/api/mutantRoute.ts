@@ -4,8 +4,7 @@ import {
     FastifyPluginAsync 
   } from 'fastify';
   import fp from 'fastify-plugin';
-  import { Db } from '../config/index';
-  import { BlogAttrs } from '../config/models/mutantModel';
+  import { Db } from '../db/index';
   
   // Declaration merging
   declare module 'fastify' {

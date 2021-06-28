@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import { fastify } from 'fastify';
 import pino from 'pino';
-import db from './config/index';
-import BlogRoutes from './routes/mutantRoute';
+import db from './db/index';
+import BlogRoutes from './api/mutantRoute';
 
 dotenv.config();
 const Port = process.env.PORT || 3000;
