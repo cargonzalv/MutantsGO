@@ -3,9 +3,9 @@ import { StatsService } from '../services';
 
 describe('stats', () => {
   const human = new Mutant();
-  human.dna = ['ATGCGA', 'CAGTGC', 'TTATTT', 'AGACGG', 'GCGTCA', 'TCACTG'];
+  human.is_mutant = false;
   const mutant = new Mutant();
-  mutant.dna = ['ATGCGA', 'CAGTGC', 'TTATGT', 'AGAAGG', 'CCCCTA', 'TCACTG'];
+  mutant.is_mutant = true;
 
   test('stats returns correct calc', () => {
     const humans: MutantDocument[] = [human, mutant, mutant, mutant]; // Insert 3 mutants, 4 total humans
