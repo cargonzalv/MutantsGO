@@ -2,7 +2,7 @@ import { FastifyInstance, FastifyPluginAsync, FastifyPluginOptions } from 'fasti
 
 import fp from 'fastify-plugin';
 import mongoose from 'mongoose';
-import { Mutant, MutantModel } from './models/mutantSchema';
+import { Mutant, MutantModel } from './schemas/mutantSchema';
 
 export interface Models {
   Mutant: MutantModel;

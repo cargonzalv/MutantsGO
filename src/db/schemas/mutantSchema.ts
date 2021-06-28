@@ -9,7 +9,7 @@ export interface MutantModel extends Model<MutantDocument> {
   addOne(doc: MutantAttrs): MutantDocument;
 }
 export interface MutantDocument extends Document {
-  dna: string;
+  dna: string[];
   is_mutant: boolean;
   createdAt: string;
   updatedAt: string;
@@ -17,7 +17,7 @@ export interface MutantDocument extends Document {
 export const mutantSchema: Schema = new Schema(
   {
     dna: {
-      type: String,
+      type: [String],
       required: true,
     },
     is_mutant: {
