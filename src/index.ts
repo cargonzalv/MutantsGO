@@ -7,7 +7,7 @@ import * as sourceMapSupport from 'source-map-support';
 import { DocsRoute } from './docsConfig';
 
 sourceMapSupport.install();
-const Port = process.env.PORT || 3001;
+const Port = process.env.PORT || 3000;
 const uri = config.get('db')?.uri || 'mongodb://localhost:27017/mutants';
 const server = fastify({
   logger: pino({ level: 'info' }),
