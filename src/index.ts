@@ -1,12 +1,13 @@
-import dotenv from 'dotenv';
+import * as config from 'config';
 import { fastify } from 'fastify';
 import pino from 'pino';
 import db from './db/index';
 import BlogRoutes from './api/mutantRoute';
+import * as sourceMapSupport from 'source-map-support';
 
-dotenv.config();
+sourceMapSupport.install();
 const Port = process.env.PORT || 3000;
-const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+const uri = config.get('db');
 const server = fastify({
   logger: pino({ level: 'info' }),
 });

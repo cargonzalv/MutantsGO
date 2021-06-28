@@ -34,12 +34,14 @@
   "homepage": "https://github.com/cargonzalv/MutantsGO#readme",
   "dependencies": {
     "@types/jest": "^26.0.23",
+    "config": "^3.3.6",
     "fastify": "^3.18.0",
     "fastify-blipp": "^3.1.0",
     "fastify-plugin": "^3.0.0",
     "jest": "^27.0.5",
     "mongoose": "^5.12.15",
     "node-cache": "^5.1.2",
+    "source-map-support": "^0.5.19",
     "ts-jest": "^27.0.3"
   },
   "devDependencies": {
@@ -49,7 +51,6 @@
     "@typescript-eslint/eslint-plugin": "4.28.0",
     "@typescript-eslint/parser": "4.28.0",
     "cross-env": "^7.0.3",
-    "dotenv": "^10.0.0",
     "eslint": "7.29.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "3.4.0",
