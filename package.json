@@ -39,6 +39,7 @@
     "fastify-plugin": "^3.0.0",
     "jest": "^27.0.5",
     "mongoose": "^5.12.15",
+    "node-cache": "^5.1.2",
     "ts-jest": "^27.0.3"
   },
   "devDependencies": {

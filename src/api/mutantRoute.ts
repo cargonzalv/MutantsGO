@@ -3,6 +3,9 @@ import { FastifyInstance, FastifyPluginOptions, FastifyPluginAsync } from 'fasti
 import fp from 'fastify-plugin';
 import { HumanService, StatsService } from '../services';
 import { Db } from '../db/index';
+import NodeCache from 'node-cache';
+import { StatsModel } from 'models/statsModel';
+const mutantCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
 
 // Declaration merging
 declare module 'fastify' {
@@ -24,7 +27,10 @@ const MutantRoute: FastifyPluginAsync = async (server: FastifyInstance, options:
 
       const mutant = await Mutant.addOne(request.body);
       await mutant.save();
-      return isMutant ? reply.code(200).send(mutant) : reply.code(403).send('No tiene permisos para entrar');
+      await mutantCache.del('stats');
+      return isMutant
+        ? reply.code(200).send(mutant)
+        : reply.code(403).send('Humano detectado. No tiene permisos para entrar');
     } catch (error) {
       request.log.error(error);
       return reply.send(500);
@@ -32,13 +38,16 @@ const MutantRoute: FastifyPluginAsync = async (server: FastifyInstance, options:
   });
   server.get('/stats', {}, async (request, reply) => {
     try {
-      const { Mutant } = server.db.models;
-      const humans = await Mutant.find({});
+      let stats = await mutantCache.get<StatsModel>('stats');
+      if (!stats) {
+        const { Mutant } = server.db.models;
+        const humans = await Mutant.find({});
 
-      const statsService = new StatsService();
+        const statsService = new StatsService();
 
-      const stats = statsService.getStats(humans);
-
+        stats = statsService.getStats(humans);
+        await mutantCache.set('stats', stats);
+      }
       return reply.code(200).send(stats);
     } catch (error) {
       request.log.error(error);
