@@ -1,11 +1,12 @@
-const isMutant = function(dna: String[]) {
-    for (let i = 0; i < dna.length; i++) {
-        let cols = dna[i].split("");
-        for (let j = 0; j < cols.length; j++) {
-            let value = cols[j];
-            console.log(value);
-        }
+const isMutant = function (dna: string[]): boolean {
+  for (let i = 0; i < dna.length; i++) {
+    const cols = dna[i].split('');
+    for (let j = 0; j < cols.length; j++) {
+      const value = cols[j];
+      console.log(value);
     }
-}
+  }
+  return false;
+};
 
 export default isMutant;
