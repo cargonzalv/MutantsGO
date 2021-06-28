@@ -4,7 +4,7 @@
   "description": "Simulación de movimiento de planetas desarrollado en Golang.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && tsc --sourceMap -p ./",
+    "build": "tsc --sourceMap -p ./",
     "dev": "ts-node-dev src/index.ts",
     "lint": "eslint \"**/*.{ts,tsx}\" --quiet --fix",
     "start": "node dist/index.js",
