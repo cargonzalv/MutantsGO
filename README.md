@@ -2,7 +2,7 @@
 
 API de detección de mutantes desarrollado en Nodejs.
 
-## Simulación gráfica
+## Simulación gráfica del algoritmo
 ![Simulación de prueba](docs/sim.gif)
 
 ## Documentación API
