@@ -2,48 +2,39 @@
 
 API de detección de mutantes desarrollado en Nodejs.
 
-## Simulación gráfica del algoritmo
+## Simulación gráfica del algoritmo planteado
 ![Simulación de prueba](docs/sim.gif)
 
 ## Documentación API
 
-[https://ml-solar-system-281804.rj.r.appspot.com](https://ml-solar-system-281804.rj.r.appspot.com/docs/index.html)
-
-## Modelo de datos
-
-[https://ml-solar-system-281804.rj.r.appspot.com/modelo](https://ml-solar-system-281804.rj.r.appspot.com/modelo)
+[https://ml-mutants-318208.ue.r.appspot.com/docs](https://ml-mutants-318208.ue.r.appspot.com/docs)
 
 ### Base de datos
 
-- Planeta
+- Mutantes
 
-![Tabla planetas](docs/planetas2.PNG)
+![Tabla mutantes](docs/mutantes.PNG)
 
-- Registro Clima
+## Uso en ambiente de desarrollo
 
-![Tabla registro clima](docs/registroClima2.PNG)
+- El setup de desarrollo está centrado en el uso de Docker y docker-compose para fácil acceso, aunque también se puede realizar manualmente por medio de la instalación de npm, node y sus dependencias.
 
-## Cron Job corriendo cada día calculando clima de los próximos 10 años
-![Evidencia del cron job corriendo en App Engine](docs/cronJob.PNG)
+1) Instalar Docker [acá](https://www.docker.com/products/docker-desktop).
 
-## Instalación
-
-1) Instalar Go 1.14 [acá](https://golang.org/dl/).
-
-2) Correr el siguiente comando para instalar las dependencias:
+2) Correr el siguiente comando:
 ```bash
-go get
+docker-compose up
 ```
 
-## Uso para desarrollo
+3) Probar los servicios /mutants y /stats explicados en la documentación del API
 
-Insertar variables de entorno de DATABASE_URL y password en /scripts/run.sh
+## Uso en Cloud
 
-```bash
-export DATABAASE_URL=xxx.xxx.xxx.xxx (reemplazar por credenciales de bd propia)
-export password=XXXXXX (reemplazar por credenciales de bd propia))
-```
-correr archivo en ./scripts/run.sh
+- En producción es necesario ingresar a la página generada por App Engine [acá](https://ml-mutants-318208.ue.r.appspot.com/docs). Ahí se encontrará la explicación de los dos servicios expuestos:
+
+1) POST https://ml-mutants-318208.ue.r.appspot.com/mutant
+
+2) GET https://ml-mutants-318208.ue.r.appspot.com/stats
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
