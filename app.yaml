@@ -12,4 +12,8 @@
 
 # [START gae_quickstart_yaml]
 runtime: nodejs14
+env_variables:
+  NODE_ENV: "production"
+  PORT: 8080
+entrypoint: npm run start-prod
 # [END gae_quickstart_yaml]
