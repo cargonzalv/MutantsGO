@@ -1,5 +1,5 @@
 import { MutantAttrs } from 'db/schemas/mutantSchema';
-import { FastifyInstance, FastifyPluginOptions, FastifyPluginAsync, InjectOptions } from 'fastify';
+import { FastifyInstance, FastifyPluginOptions, FastifyPluginAsync } from 'fastify';
 import fp from 'fastify-plugin';
 import { HumanService, StatsService } from '../services';
 import { Db } from '../db/index';
@@ -11,11 +11,6 @@ const mutantCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
 
 // Declaration merging
 declare module 'fastify' {
-  export interface InjectOptions {
-    body?: {
-      dna: string[];
-    };
-  }
   export interface FastifyInstance {
     db: Db;
   }
