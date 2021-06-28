@@ -8,6 +8,7 @@
     "dev": "ts-node-dev src/index.ts",
     "lint": "eslint \"**/*.{ts,tsx}\" --quiet --fix",
     "start": "node dist/index.js",
+    "gcp-build": "tsc --sourceMap -p ./",
     "test": "cross-env NODE_ENV=test npx jest --verbose --runInBand"
   },
   "husky": {
